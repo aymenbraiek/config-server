@@ -1,0 +1,7 @@
+name:
+  value: aymen
+
+spring:
+  cloud:
+    config:
+      override-system-properties: false
