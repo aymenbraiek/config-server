@@ -8,7 +8,7 @@ JAVA_OPTS=""
 # Set the working directory to /app
 WORKDIR /app
 # Copy the executable into the container at /app
-ADD target/configserver-1.0.0-SNAPSHOT.jar app.jar
+ADD target/* app.jar
 # Make port 8080 available to the world outside this container
 EXPOSE 8888
 # Run app.jar when the container launches
