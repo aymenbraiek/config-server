@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: myboutique
+          image: docker.io/aymenbraiek2019/config-server:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: config-server
+              containerPort: 8888
+              protocol: TCP
+      imagePullSecrets:
+        - name: secret1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-lb
+  labels:
+    app: config-server
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8888
+  selector:
+    app: config-server
